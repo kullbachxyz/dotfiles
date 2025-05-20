@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# Show wifi 📶 and percent strength or 📡 if none.
+# Show 🌐 if connected to ethernet or ❎ if none.
+# Show 🔒 if a vpn connection is active
+
+case $BLOCK_BUTTON in
+	1) "$TERMINAL" -e nmtui; pkill -RTMIN+4 dwmblocks ;;
+	3) notify-send "🌐 Internet module" "\- Click to connect
+❌: wifi disabled
+📡: no wifi connection
+📶: wifi connection with quality
+❎: no ethernet
+🌐: ethernet working
+🔒: vpn is active
+" ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+# Wi-Fi
+wifiicon="❌ "
+for iface in /sys/class/net/*; do
+    name=$(basename "$iface")
+    if [[ $name == w* ]]; then
+        state=$(cat "$iface/operstate" 2>/dev/null)
+        if [ "$state" = "up" ]; then
+            wifiicon="$(awk '/^\s*w/ { print "📶", int($3 * 100 / 70) "% " }' /proc/net/wireless)"
+            break
+        elif [ "$state" = "down" ]; then
+            flags=$(cat "$iface/flags" 2>/dev/null)
+            [ "$flags" = "0x1003" ] && wifiicon="📡 " || wifiicon="❌ "
+        fi
+    fi
+done
+
+# Ethernet — only show if connected
+ethericon=""
+for iface in /sys/class/net/*; do
+    name=$(basename "$iface")
+    if [[ $name == e* || $name == en* ]]; then
+        if [ "$(cat "$iface/operstate" 2>/dev/null)" = "up" ]; then
+            ethericon="🌐"
+            break
+        fi
+    fi
+done
+
+# VPN (TUN device)
+[ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && tunicon=" 🔒" || tunicon=""
+
+# Output
+#printf "%s%s%s\n" "$wifiicon" "$ethericon" "$tunicon"
+
+output=""
+
+[ -n "$wifiicon" ] && output+="$wifiicon"
+[ -n "$ethericon" ] && output+="$ethericon"
+[ -n "$tunicon" ] && output+="$tunicon"
+
+output=$(echo "$output" | xargs)  # trims leading/trailing whitespace
+
+printf "%s\n" "$output"
