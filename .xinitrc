@@ -1,5 +1,6 @@
 exec dunst &
-exec picom --no-fading-openclose &
+exec picom &
 exec setbg &
+exec remaps &
 exec dwmblocks &
 exec dwm
