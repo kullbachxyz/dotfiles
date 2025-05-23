@@ -1,0 +1,6 @@
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias gsrc="cd ~/.local/src"
+alias gbin="cd ~/.local/bin"
+alias clip="xclip -selection clipboard"
+alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
