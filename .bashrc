@@ -1,5 +1,4 @@
 #
-#
 # ~/.bashrc
 #
 # Add ~/.local/bin and all subdirectories to PATH
