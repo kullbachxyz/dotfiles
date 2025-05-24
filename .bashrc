@@ -5,6 +5,12 @@
 while IFS= read -r -d '' dir; do
      [[ ":$PATH:" != *":$dir:"* ]] && PATH="$dir:$PATH"
 done < <(find "$HOME/.local/bin" -type d -print0)
+
+# Bash Completion
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	  . /usr/share/bash-completion/bash_completion
+fi
+
 # Globals
 export EDITOR=vim
 export TERMINAL=st
