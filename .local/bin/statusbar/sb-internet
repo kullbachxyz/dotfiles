@@ -24,7 +24,8 @@ for iface in /sys/class/net/*; do
     if [[ $name == w* ]]; then
         state=$(cat "$iface/operstate" 2>/dev/null)
         if [ "$state" = "up" ]; then
-            wifiicon="$(awk '/^\s*w/ { print "📶", int($3 * 100 / 70) "% " }' /proc/net/wireless)"
+            #wifiicon="$(awk '/^\s*w/ { print "📶", int($3 * 100 / 70) "%" }' /proc/net/wireless)"
+	    wifiicon="$(awk '/^\s*w/ { printf "📶%d%%", int($3 * 100 / 70) }' /proc/net/wireless)"       
             break
         elif [ "$state" = "down" ]; then
             flags=$(cat "$iface/flags" 2>/dev/null)
