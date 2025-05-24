@@ -1,6 +1,7 @@
-exec dunst &
-exec picom &
-exec setbg &
-exec remaps &
-exec dwmblocks &
+#!/bin/sh
+dunst &
+picom &
+setbg &
+remaps &
+dwmblocks &
 exec dwm
