@@ -1,0 +1,32 @@
+# ~/.config/mako/config
+
+# keep newest notifications at the bottom
+sort=-time
+layer=overlay
+
+# colors
+background-color=#1a1b26
+text-color=#c0c0c0
+border-color=#005577
+
+# size of the notification window
+width=300
+height=110
+
+# flat, minimal box
+border-size=3
+border-radius=0
+padding=8
+margin=8
+
+# typography
+font=JetBrainsMono NF 14
+
+# no icons – just text
+icons=0
+max-icon-size=64
+
+# timeouts
+default-timeout=5000
+ignore-timeout=1
+

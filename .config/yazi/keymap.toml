@@ -1,0 +1,5 @@
+[[mgr.prepend_keymap]]
+on   = [ "b", "g" ]       # press b then g
+run  = 'shell --orphan -- ~/.config/mango/scripts/wal-wayland.sh "$0"'
+desc = "Set wallpaper + theme from hovered image"
+

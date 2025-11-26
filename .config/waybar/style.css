@@ -1,0 +1,96 @@
+@import url("file:///home/ph/.cache/wal/colors-waybar.css");
+
+/* Aliases so the rest of the config can still use @bg, @fg, etc. */
+@define-color bg     @wb-bg;
+@define-color fg     @wb-fg;
+@define-color accent @wb-accent;
+@define-color dim    @wb-accent-alt;
+@define-color white  #ffffff;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: @bg;
+    color: @fg;
+    border: none;
+    box-shadow: none;
+}
+
+/* --- Workspaces --- */
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: @fg;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+#workspaces button.active {
+    color: @white;
+    border-bottom: 2px solid @accent;
+}
+
+#workspaces button.hidden {
+    color: @dim;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.hidden.active {
+    color: @white;
+    border-bottom: 2px solid @accent;
+}
+
+#workspaces button.urgent {
+    color: @white;
+    background-color: @accent;
+}
+
+
+/* --- Modules --- */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#network,
+#tray,
+#custom-sep {
+    padding: 0 10px;
+    color: @fg;
+    border: none;
+    transition: color 0.2s;
+}
+
+/* Disconnected network state */
+#network.disconnected {
+    color: @accent;
+}
+
+/* Seperator */
+#custom-sep {
+    color: @dim;
+}
+
+/* Tray */
+#tray {
+    background: transparent;
+}
+
+#custom-wg.connected {
+    color: #00aa00; /* @wb-accent */
+}
+
+#custom-wg.disconnected {
+    color: #aa0000; /* @wb-error */
+}
+

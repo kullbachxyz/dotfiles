@@ -1,0 +1,145 @@
+{
+  "modules-left": [
+    "ext/workspaces",
+    "custom/sep",
+    "dwl/window#title"
+  ],
+  "modules-right": [
+//    "custom/sep",
+//    "disk",
+//    "custom/sep",
+//    "memory",
+//    "custom/sep",
+//    "cpu",
+//    "custom/sep",
+//    "mpd",
+    "custom/wg",
+    "custom/sep",
+    "network",
+    "custom/sep2",
+//    "custom/brightness",
+    "custom/sep",
+    "custom/volume",
+    "custom/sep2",
+    "battery",
+    "custom/sep",
+    "clock",
+    "tray"
+  ],
+
+  "clock": {
+    "format": " {:%d-%b-%Y  %H:%M}",
+    "tooltip": false,
+    //"tooltip-format": "{:%A, %d %B %Y}\n\n{calendar}",
+    "on-click": "foot -e calcurse"
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": false
+  },
+
+  "memory": {
+    //"format": " {used:.0f}/{total:.0f}GB"
+    "format": " {used}GiB"
+  },
+
+  "disk": {
+    "interval": 60,
+    "path": "/",
+    "format": " {free}"
+  },
+
+"battery": {
+  "states": {
+    "good": 95,
+    "warning": 30,
+    "critical": 15
+  },
+  "format": "{icon}{capacity}%",
+  "format-plugged": " {capacity}%",
+  "format-time": "{H}:{M}",
+  "format-icons": [" ", " ", " ", " ", " "],
+  "on-click": "foot -e battop"
+},
+
+"custom/wg": {
+    "exec": "exec ~/.config/mango/scripts/wireguard-manager.sh -s",
+    "format": "{icon}",
+    "format-icons": {
+          "connected": "<span>VPN:  </span>",
+          "disconnected": "<span>VPN:  </span>"
+
+          //"connected": "<span color=\"#9ece6a\">VPN:  </span>",
+          //"disconnected": "<span color=\"#f7768e\">VPN:  </span>"
+    },
+    "interval": "once",
+    "on-click": "~/.config/mango/scripts/wireguard-manager.sh -t && pkill -SIGRTMIN+1 waybar",
+    "return-type": "json",
+    "signal": 1
+},
+
+"mpd": {
+  "format": "{stateIcon} {artist} - {title}",
+  "format-disconnected": "Disconnected ",
+  "interval": 10,
+  "state-icons": {
+      "paused": "",
+      "playing": ""
+  },
+  "tooltip-format": "MPD (connected)",
+  "tooltip-format-disconnected": "MPD (disconnected)"
+},
+
+"network": {
+  "format-wifi": "  {essid}",
+  "format-ethernet": "  {ifname}",
+  "format-disconnected": "󰖪",
+  "tooltip-format": "{ifname} - {ipaddr}",
+  "on-click": "foot -e nmtui"
+},
+
+"custom/volume": {
+  "exec": "~/.config/mango/scripts/volume.sh get",
+  "format": " {}%",
+  "tooltip-format": "{}%",
+  "on-click": "foot -e alsamixer",
+  "interval": 1
+},
+
+"custom/brightness": {
+  "exec": "~/.config/mango/scripts/brightness.sh get",
+  "format": " {}% ",
+  "interval": 1
+},
+
+  "ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": false,
+    "on-click": "activate",
+    "sort-by-id": true
+  },
+
+  "dwl/tags": {
+    "num-tags": 9
+  },
+
+  "dwl/window#layout": {
+    "format": "[{layout}]"
+  },
+
+  "dwl/window#title": {
+    "format": " {title}"
+  },
+
+  "custom/sep": {
+    //"format": " ",
+    "format": "",
+    "interval": 0
+  },
+
+  "custom/sep2": {
+  "format": " ",
+  "interval": 0
+  }
+}

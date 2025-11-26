@@ -82,4 +82,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Aliases
 alias v='nvim'
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-compdef _git cfg
+if type _git &>/dev/null; then
+  compdef _git cfg
+fi
+
