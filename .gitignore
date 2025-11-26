@@ -1,0 +1,8 @@
+.ssh/
+.gnupg/
+.local/share/keyrings/
+.local/share/Trash/
+.cache/
+.mozilla/
+.config/chromium/
+.config/ungoogled-chromium/
