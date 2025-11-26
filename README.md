@@ -1,4 +1,4 @@
-# ph’s dotfiles
+# kullbachxyz’s dotfiles
 
 Dotfiles managed with a **bare git repo** in `$HOME` and a `cfg` alias.  
 No stow, no symlinks, just git.
