@@ -148,12 +148,27 @@ cat > "$rofi_colors" <<EOF
 EOF
 
 ########################################################################
-# reload Waybar so new colors apply immediately
+# MAKO – notification colors
+########################################################################
+
+mako_colors="$cache/colors-mako"
+
+cat > "$mako_colors" <<EOF
+background-color=$bg
+text-color=$fg
+border-color=$c4
+EOF
+
+
+########################################################################
+# reload Waybar and mako so new colors apply immediately
 ########################################################################
 
 if pgrep -x waybar >/dev/null 2>&1; then
   pkill -USR2 waybar || true
 fi
+
+makoctl reload
 
 notify "Wallpaper + colors updated from $(basename "$src")"
 

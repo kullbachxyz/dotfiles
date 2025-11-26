@@ -1,13 +1,10 @@
 # ~/.config/mako/config
 
+include=~/.cache/wal/colors-mako
+
 # keep newest notifications at the bottom
 sort=-time
 layer=overlay
-
-# colors
-background-color=#1a1b26
-text-color=#c0c0c0
-border-color=#005577
 
 # size of the notification window
 width=300
