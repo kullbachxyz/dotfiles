@@ -1,0 +1,53 @@
+@import "~/.cache/wal/colors-rofi.rasi"
+
+/* Small prompt theme that uses pywal colors */
+
+* {
+    /* map wal colors to local vars */
+    bg:            @background;
+    bg-alt:        @background-alt;
+    fg:            @foreground;
+    accent:        @selected;
+    border-col:    @border-color;
+
+    border:        0;
+    border-radius: 0;
+    font:          "JetBrainsMono Nerd Font 16";
+    background-color: @bg;
+    text-color:       @fg;
+}
+
+/* Main window */
+window {
+    width: 500px;
+    padding: 15px;
+
+    border: 2px;
+    border-color: @border-col;
+}
+
+/* The list of entries */
+listview {
+    padding: 0;
+    spacing: 2px;
+}
+
+/* Each entry */
+element {
+    padding: 4px;
+    background-color: @bg-alt;
+}
+
+/* Entry text */
+element-text {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+/* Selected / hovered entry */
+element selected,
+element-text selected {
+    background-color: @accent;
+    text-color: @bg;
+}
+

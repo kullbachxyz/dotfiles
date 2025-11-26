@@ -1,8 +1,60 @@
+# --- sensitive stuff ---
 .ssh/
 .gnupg/
 .local/share/keyrings/
+
+# --- trash / caches / thumbnails ---
 .local/share/Trash/
 .cache/
+.thumbnails/
+.gvfs/
+.mutagen/
+
+# --- browsers / profiles / heavy app data ---
 .mozilla/
 .config/chromium/
 .config/ungoogled-chromium/
+.config/google-chrome/
+.config/BraveSoftware/
+.config/vivaldi/
+.config/discord/
+.config/Slack/
+.config/spotify/
+.config/zoom/
+.local/share/Steam/
+
+# --- shell histories & misc REPL ---
+.bash_history
+.bash_history*
+.zsh_history
+.zsh_history*
+.fish_history
+.lesshst
+.python_history
+.node_repl_history
+
+# --- editor swap / backup / session files ---
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+
+.viminfo
+.viminfo*
+.netrw*
+.local/share/nvim/shada/
+.idea/
+.vscode/
+.code/
+
+# --- logs and state-ish stuff ---
+.local/state/
+.local/share/recently-used.xbel
+.local/share/recently-used.xbel.journal
+.xsession-errors
+.xsession-errors.old
+
+# --- misc ---
+.DS_Store
+

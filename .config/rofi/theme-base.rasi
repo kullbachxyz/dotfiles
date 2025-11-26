@@ -1,0 +1,133 @@
+/* Base layout/theme; colors come from colors-rofi.rasi */
+
+* {
+    /* colors expected from colors-rofi.rasi:
+       background, background-alt, foreground, selected,
+       border-color, separatorcolor, urgent
+    */
+
+    bg:            @background;
+    hv:            @selected;
+    primary:       @border-color;
+    ug:            @background-alt;
+    kl:            @foreground;
+    black:         #000000;
+
+    font: "JetBrainsMono NF 14";
+    background-color: @bg;
+    border: 0px;
+
+    transparent: rgba(46,52,64,0);
+}
+
+/* window layout etc. */
+window {
+    width: 700;
+    orientation: horizontal;
+    location: center;
+    anchor: center;
+    transparency: "screenshot";
+    border-color: @primary;
+    border: 3px;
+    border-radius: 0;
+    spacing: 0;
+    children: [ mainbox ];
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    color: @kl;
+    padding: 11px;
+    border: 0 0 2px 0;
+    border-color: @primary;
+}
+
+message {
+    padding: 0;
+}
+
+textbox {
+    color: @kl;
+    padding: 10px;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color: inherit;
+}
+
+entry {
+    cursor: pointer;
+}
+
+prompt {
+    margin: 0px 5px 0px 0px;
+}
+
+listview {
+    layout: vertical;
+    padding: 8px;
+    lines: 12;
+    columns: 1;
+    dynamic: false;
+}
+
+element {
+    padding: 2px;
+    vertical-align: 1;
+    color: @kl;
+    font: inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element selected.normal {
+    color: @black;
+    background-color: @hv;
+}
+
+element normal active {
+    background-color: @hv;
+    color: @black;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal urgent {
+    background-color: @primary;
+}
+
+element selected active {
+    background: @hv;
+    foreground: @bg;
+}
+
+button {
+    padding: 6px;
+    color: @primary;
+    horizonatal-align: 0.5;
+
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @primary;
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @primary;
+}
+
+scrollbar {
+    enabled: true;
+}
+

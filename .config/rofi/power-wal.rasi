@@ -1,0 +1,86 @@
+@import "~/.cache/wal/colors-rofi.rasi"
+
+/* Wal-backed power menu theme */
+
+* {
+    /* map wal colors */
+    bg:            @background;
+    bg-alt:        @background-alt;
+    fg:            @foreground;
+    accent:        @selected;
+    border-col:    @border-color;
+
+    font: "JetBrainsMono Nerd Font 16";
+    background-color: @bg;
+    text-color:       @fg;
+}
+
+/* Main window */
+window {
+    width: 360px;
+    padding: 12px;
+
+    border: 2px;
+    border-color: @border-col;
+
+    location: center;
+    anchor: center;
+}
+
+/* Top bar (prompt + entry) */
+inputbar {
+    padding: 6px 8px;
+    background-color: @bg-alt;
+    border: 0 0 1px 0;
+    border-color: @border-col;
+}
+
+prompt {
+    text-color: @fg;
+    margin: 0 6px 0 0;
+}
+
+entry {
+    text-color: @fg;
+    cursor: text;
+    cursor-color: rgba(0, 0, 0, 0);
+    cursor-width: 0px;
+    hide-cursor-on-empty: true; 
+}
+
+/* Don’t show “abc / Aa” case indicator */
+case-indicator {
+    enabled: false;
+}
+
+/* List of entries */
+listview {
+    padding: 6px 0 0 0;
+    spacing: 4px;
+    scrollbar: false;
+    lines: 6;
+}
+
+/* Each row */
+element {
+    padding: 4px 8px;
+    background-color: transparent;
+    vertical-align: 0.5;
+}
+
+/* Icon + text */
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+/* Selected row */
+element selected {
+    background-color: @accent;
+}
+
+element-text selected,
+element-icon selected {
+    text-color: @bg;
+}
+
