@@ -92,6 +92,30 @@ hex_to_rgb() {
   printf '%d, %d, %d' "0x$r" "0x$g" "0x$b"
 }
 
+to_mango_color() {
+  local hex="${1#\#}"
+  printf '0x%sff\n' "$hex"
+}
+
+########################################################################
+# MANGOWC – border + focus colors
+########################################################################
+
+mango_conf="$HOME/.config/mango/config.conf"
+
+if [ -f "$mango_conf" ]; then
+  border_hex="$bg"   # or $c0 if you prefer
+  focus_hex="$c4"    # or $c8 / whatever you like
+
+  border_col="$(to_mango_color "$border_hex")"
+  focus_col="$(to_mango_color "$focus_hex")"
+
+  sed -i \
+    -e "s/^bordercolor=.*/bordercolor=$border_col/" \
+    -e "s/^focuscolor=.*/focuscolor=$focus_col/" \
+    "$mango_conf"
+fi
+
 
 ########################################################################
 # FOOT (terminal) – cursor = double color of regular7
@@ -224,6 +248,8 @@ if pgrep -x waybar >/dev/null 2>&1; then
 fi
 
 makoctl reload
+
+mmsg -d reload_config
 
 notify "Wallpaper + colors updated from $(basename "$src")"
 
