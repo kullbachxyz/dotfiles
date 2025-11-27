@@ -1,11 +1,10 @@
 # kullbachxyz’s dotfiles
 
 Dotfiles managed with a **bare git repo** in `$HOME` and a `cfg` alias.  
-No stow, no symlinks, just git.
 
 ---
 
-## Setup on this machine
+## Setup
 
 Init bare repo and alias:
 
