@@ -1,6 +1,7 @@
 # ~/.config/mako/config
 
-include=~/.cache/wal/colors-mako
+#include=~/.cache/wal/colors-mako
+include=~/.config/mako/colors
 
 # keep newest notifications at the bottom
 sort=-time

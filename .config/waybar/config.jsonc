@@ -103,7 +103,7 @@
   "exec": "~/.config/mango/scripts/volume.sh get",
   "format": " {}%",
   "tooltip-format": "{}%",
-  "on-click": "foot -e alsamixer",
+  "on-click": "foot -e pulsemixer",
   "interval": 1
 },
 

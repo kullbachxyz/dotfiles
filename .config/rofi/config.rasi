@@ -28,5 +28,3 @@ configuration{
 }
 
 @theme "~/.config/rofi/theme-combined.rasi"
-
-//@theme "~/.config/rofi/tokyonight.rasi"
