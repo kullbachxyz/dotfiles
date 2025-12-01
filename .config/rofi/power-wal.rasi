@@ -1,4 +1,6 @@
-@import "~/.cache/wal/colors-rofi.rasi"
+/*@import "~/.cache/wal/colors-rofi.rasi"*/
+@import "~/.config/rofi/theme-gruvbox.rasi"
+
 
 /* Wal-backed power menu theme */
 
@@ -30,7 +32,7 @@ window {
 /* Top bar (prompt + entry) */
 inputbar {
     padding: 6px 8px;
-    background-color: @bg-alt;
+    background-color: @bg;
     border: 0 0 1px 0;
     border-color: @border-col;
 }
