@@ -4,6 +4,8 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS SHARE_HISTORY prompt_subst
 
+export EDITOR="/usr/bin/nvim"
+
 # Completion
 autoload -Uz compinit
 compinit
@@ -81,6 +83,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Aliases
 alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 if type _git &>/dev/null; then
   compdef _git cfg
