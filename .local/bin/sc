@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# show 0–15 terminal colors in a grid
+# 7 and 15 use color 0 as foreground so the numbers stay visible
+
+for row in 0 1; do
+  for col in {0..7}; do
+    idx=$((row*8 + col))
+
+    if [ "$idx" -eq 7 ] || [ "$idx" -eq 15 ]; then
+      # foreground = color 0, background = idx
+      printf "\e[38;5;0m\e[48;5;%sm  %2s  \e[0m " "$idx" "$idx"
+    else
+      # default foreground, colored background
+      printf "\e[48;5;%sm  %2s  \e[0m " "$idx" "$idx"
+    fi
+  done
+  printf "\n"
+done
+

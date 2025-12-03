@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Script to set wallpapers
+
+wp_dir="$HOME/.local/walls"
+get_wp=$(ls "$wp_dir" | shuf -n 1)
+
+# kill any existing swaybg processes
+pkill swaybg 2>/dev/null
+
+if [ -z "$1" ]; then
+    swaybg -i "$wp_dir/$get_wp" -m fill &
+else
+    swaybg -i "$1" -m fill &
+fi
+
