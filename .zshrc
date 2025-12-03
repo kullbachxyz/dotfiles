@@ -4,7 +4,11 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS SHARE_HISTORY prompt_subst
 
-export EDITOR="/usr/bin/nvim"
+# Default programs:
+export EDITOR="nvim"
+export TERMINAL="foot"
+export TERMINAL_PROG="foot"
+export BROWSER="firefox"
 
 # Completion
 autoload -Uz compinit
@@ -12,19 +16,34 @@ compinit
 
 # Colors and Prompt
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[\
-%{$fg[yellow]%}%n\
-%{$fg[green]%}@\
-%{$fg[blue]%}%M \
-%{$fg[magenta]%}%~\
-%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-
-# Use vim-style keybindings in zsh
+# vi mode
 bindkey -v
+export KEYTIMEOUT=1
 
-# Make ESC in insert mode feel snappy
-KEYTIMEOUT=1
+# Change cursor shape for different vi modes.
+function zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[2 q';;      # non-blinking block
+        viins|main) echo -ne '\e[6 q';; # non-blinking beam
+    esac
+}
+
+zle -N zle-keymap-select
+
+zle-line-init() {
+    zle -K viins
+    echo -ne '\e[6 q'  # non-blinking beam on init
+}
+zle -N zle-line-init
+
+# Use non-blinking beam on startup
+echo -ne '\e[6 q'
+
+# Use non-blinking beam for each new prompt
+preexec() { echo -ne '\e[6 q' ;}
+
 
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -43,3 +62,6 @@ if type _git &>/dev/null; then
   compdef _git cfg
 fi
 
+# Exports
+export EDITOR="nvim"
+export PATH="$HOME/.local/bin:$PATH"
