@@ -1,5 +1,6 @@
 /*@import url("file:///home/ph/.cache/wal/colors-waybar.css");*/
-@import url("file:///home/ph/.config/waybar/gruvbox-dark.css");
+/*@import url("file:///home/ph/.config/waybar/gruvbox-dark.css");*/
+@import url("file:///home/ph/.config/waybar/dwm.css");
 
 /* Aliases so the rest of the config can still use @bg, @fg, etc. */
 @define-color bg     @wb-bg;
