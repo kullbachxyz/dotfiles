@@ -92,8 +92,7 @@
 
 "custom/volume": {
   "exec": "~/.config/mango/scripts/volume.sh get",
-//  "format": " {}%",
-  "format": " ",
+  "format": " {}%",
   "tooltip-format": "{}%",
   "on-click": "foot -e pulsemixer",
   "interval": 1
