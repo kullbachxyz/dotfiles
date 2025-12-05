@@ -7,6 +7,7 @@
   "modules-right": [
     "custom/wg",
     "custom/sep2",
+    "custom/sep2",
     "bluetooth",
     "custom/sep2",
     "network",
