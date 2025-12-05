@@ -98,10 +98,12 @@ window#waybar {
 }
 
 #custom-wg.connected {
-    color: #00aa00; /* @wb-accent */
+    /*color: #00aa00; @wb-accent */
+    color: #689d6a;
 }
 
 #custom-wg.disconnected {
-    color: #aa0000; /* @wb-error */
+    /*color: #aa0000; @wb-error */
+    color: #fb4934;
 }
 
