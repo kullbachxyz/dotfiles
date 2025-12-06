@@ -16,7 +16,7 @@
 
 window#waybar {
     background-color: @bg;
-    color: @fg;
+    color: @wb-fg;
     border: none;
     box-shadow: none;
 }
