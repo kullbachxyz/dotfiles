@@ -3,23 +3,44 @@
 # Default step size
 STEP="5%"
 
+# Function to get the correct control name
+get_control_name() {
+  # First check for 'Master', then fallback to 'PCM'
+  if amixer scontrols | grep -q "Master"; then
+    echo "Master"
+  elif amixer scontrols | grep -q "PCM"; then
+    echo "PCM"
+  else
+    echo "No suitable control found"
+    exit 1
+  fi
+}
+
+# Get current volume
 get_volume() {
-  amixer get Master | grep -oP '\[\K[0-9]+(?=%\])' | head -1
+  CONTROL=$(get_control_name)
+  amixer get "$CONTROL" | grep -oP '\[\K[0-9]+(?=%\])' | head -1
 }
 
+# Check if muted
 is_muted() {
-  amixer get Master | grep -q '\[off\]'
+  CONTROL=$(get_control_name)
+  amixer get "$CONTROL" | grep -q '\[off\]'
 }
 
+# Main logic based on input argument
 case "$1" in
   up)
-    amixer set Master "$STEP"+ unmute > /dev/null
+    CONTROL=$(get_control_name)
+    amixer set "$CONTROL" "$STEP"+ unmute > /dev/null
     ;;
   down)
-    amixer set Master "$STEP"- unmute > /dev/null
+    CONTROL=$(get_control_name)
+    amixer set "$CONTROL" "$STEP"- unmute > /dev/null
     ;;
   mute)
-    amixer set Master toggle > /dev/null
+    CONTROL=$(get_control_name)
+    amixer set "$CONTROL" toggle > /dev/null
     ;;
   get)
     if is_muted; then
@@ -34,3 +55,4 @@ case "$1" in
     exit 1
     ;;
 esac
+

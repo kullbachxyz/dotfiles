@@ -1,5 +1,5 @@
 waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css &
-swaybg -c 282828 &
+swaybg -c 1a1b26 &
 #wlsunset -l 50.9375 -L 6.9603 -T 6500 -t 3300
 mako &
 

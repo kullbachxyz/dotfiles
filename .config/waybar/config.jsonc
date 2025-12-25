@@ -71,8 +71,8 @@
     "exec": "exec ~/.config/mango/scripts/wireguard-manager.sh -s",
     "format": "{icon}",
     "format-icons": {
-          "connected": "<span>VPN:  </span>",
-          "disconnected": "<span>VPN:  </span>"
+          "connected": "<span> </span>",
+          "disconnected": "<span> </span>"
     },
     "interval": "once",
     "on-click": "~/.config/mango/scripts/wireguard-manager.sh -t && pkill -SIGRTMIN+1 waybar",
@@ -87,7 +87,7 @@
   "format-ethernet": " ",
   //"format-disconnected": "󰖪",
   "format-disconnected": " ",
-  "format-disabled": "󰖪",
+  "format-disabled": "",
   "tooltip-format": "{ifname} - {ipaddr}",
   "on-click": "foot -e nmtui"
 },

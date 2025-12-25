@@ -1,5 +1,6 @@
 /*@import url("file:///home/ph/.cache/wal/colors-waybar.css");*/
-@import url("file:///home/ph/.config/waybar/gruvbox-dark.css");
+/*@import url("file:///home/ph/.config/waybar/gruvbox-dark.css");*/
+@import url("file:///home/ph/.config/waybar/tokyo-night.css");
 
 /* Aliases so the rest of the config can still use @bg, @fg, etc. */
 @define-color bg     @wb-bg;
@@ -74,7 +75,7 @@ window#waybar {
 
 /* Bluetooth state Off */
 #bluetooth.off {
-    color: @accent;
+    color: @dim;
 }
 
 /* Bluetooth state On */
@@ -84,7 +85,7 @@ window#waybar {
 
 /* Disabled network state */
 #network.disabled {
-    color: @accent;
+    color: @dim;
 }
 
 /* Disconnected network state */
@@ -103,12 +104,12 @@ window#waybar {
 }
 
 #custom-wg.connected {
-    /*color: #00aa00; @wb-accent */
-    color: #689d6a;
+    color: @accent;
+    /* color: #689d6a; */
 }
 
 #custom-wg.disconnected {
-    /*color: #aa0000; @wb-error */
-    color: #fb4934;
+    color: @dim;
+    /*color: #fb4934; */
 }
 
