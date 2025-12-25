@@ -1,0 +1,255 @@
+/* Base layout/theme; colors come from colors-rofi.rasi */
+
+/* Tokyonight colorscheme */
+* {
+    /* Tokyonight color palette */
+    bg:            #24283b;      /* Background color */
+    hv:            #9274ca;      /* Highlight/hover color */
+    primary:       #005577;      /* Border and button color */
+    ug:            #0B2447;      /* Background-alt (urgent) */
+    kl:            #7aa2f7;      /* Foreground/text color */
+    black:         #000000;      /* Black color */
+
+    font: "JetBrainsMono NF 14"; /* Font */
+    background-color: @bg;      /* Background color for elements */
+    border: 0px;                /* No border */
+    transparent: rgba(46,52,64,0); /* Transparent effect */
+}
+
+/* Window layout etc. */
+window {
+    width: 700;
+    orientation: horizontal;
+    location: center;
+    anchor: center;
+    transparency: "screenshot";
+    border-color: @primary;   /* Using Tokyonight primary color */
+    border: 3px;
+    border-radius: 0;
+    spacing: 0;
+    children: [ mainbox ];
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    color: @kl;               /* Foreground color */
+    padding: 11px;
+    border: 0 0 2px 0;
+    border-color: @primary;   /* Border color */
+}
+
+message {
+    padding: 0;
+}
+
+textbox {
+    color: @kl;               /* Foreground color */
+    padding: 10px;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color: inherit;
+}
+
+entry {
+    cursor: pointer;
+}
+
+prompt {
+    margin: 0px 5px 0px 0px;
+}
+
+listview {
+    layout: vertical;
+    padding: 8px;
+    lines: 12;
+    columns: 1;
+    dynamic: false;
+}
+
+element {
+    padding: 2px;
+    vertical-align: 1;
+    color: @kl;               /* Foreground color */
+    font: inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element selected.normal {
+    color: @black;           /* Black text for selected elements */
+    background-color: @hv;   /* Highlighted background for selected */
+}
+
+element normal active {
+    background-color: @hv;   /* Active state background */
+    color: @black;           /* Active state text color */
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal urgent {
+    background-color: @primary; /* Urgent state background */
+}
+
+element selected active {
+    background: @hv;
+    foreground: @bg;
+}
+
+button {
+    padding: 6px;
+    color: @primary;           /* Button text color */
+    horizonatal-align: 0.5;    /* Horizontal alignment */
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @primary;    /* Button border color */
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @primary;    /* Selected button border color */
+}
+
+scrollbar {
+    enabled: true;
+}
+/* Base layout/theme; colors come from colors-rofi.rasi */
+
+/* Tokyonight colorscheme */
+* {
+    /* Tokyonight color palette */
+    bg:            #24283b;      /* Background color */
+    hv:            #9274ca;      /* Highlight/hover color */
+    primary:       #005577;      /* Border and button color */
+    ug:            #0B2447;      /* Background-alt (urgent) */
+    kl:            #7aa2f7;      /* Foreground/text color */
+    black:         #000000;      /* Black color */
+
+    font: "JetBrainsMono NF 14"; /* Font */
+    background-color: @bg;      /* Background color for elements */
+    border: 0px;                /* No border */
+    transparent: rgba(46,52,64,0); /* Transparent effect */
+}
+
+/* Window layout etc. */
+window {
+    width: 700;
+    orientation: horizontal;
+    location: center;
+    anchor: center;
+    transparency: "screenshot";
+    border-color: @primary;   /* Using Tokyonight primary color */
+    border: 3px;
+    border-radius: 0;
+    spacing: 0;
+    children: [ mainbox ];
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    color: @kl;               /* Foreground color */
+    padding: 11px;
+    border: 0 0 2px 0;
+    border-color: @primary;   /* Border color */
+}
+
+message {
+    padding: 0;
+}
+
+textbox {
+    color: @kl;               /* Foreground color */
+    padding: 10px;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color: inherit;
+}
+
+entry {
+    cursor: pointer;
+}
+
+prompt {
+    margin: 0px 5px 0px 0px;
+}
+
+listview {
+    layout: vertical;
+    padding: 8px;
+    lines: 12;
+    columns: 1;
+    dynamic: false;
+}
+
+element {
+    padding: 2px;
+    vertical-align: 1;
+    color: @kl;               /* Foreground color */
+    font: inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element selected.normal {
+    color: @black;           /* Black text for selected elements */
+    background-color: @hv;   /* Highlighted background for selected */
+}
+
+element normal active {
+    background-color: @hv;   /* Active state background */
+    color: @black;           /* Active state text color */
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal urgent {
+    background-color: @primary; /* Urgent state background */
+}
+
+element selected active {
+    background: @hv;
+    foreground: @bg;
+}
+
+button {
+    padding: 6px;
+    color: @primary;           /* Button text color */
+    horizonatal-align: 0.5;    /* Horizontal alignment */
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @primary;    /* Button border color */
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @primary;    /* Selected button border color */
+}
+
+scrollbar {
+    enabled: true;
+}
+
