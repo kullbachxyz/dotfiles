@@ -1,5 +1,6 @@
 //@import "~/.cache/wal/colors-rofi.rasi"
-@import "~/.config/rofi/theme-gruvbox.rasi"
+//@import "~/.config/rofi/theme-gruvbox.rasi"
+@import "~/.config/rofi/theme-tokyo-night.rasi"
 
 /* Small prompt theme that uses pywal colors */
 

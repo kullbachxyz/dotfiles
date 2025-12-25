@@ -7,6 +7,7 @@
 @define-color fg     @wb-fg;
 @define-color accent @wb-accent;
 @define-color dim    @wb-accent-alt;
+@define-color bright @wb-accent-bright;
 @define-color white  #ffffff;
 
 * {
@@ -33,27 +34,27 @@ window#waybar {
     color: @fg;
     background: transparent;
     border: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid transparent;
     transition: border-color 0.2s, color 0.2s;
 }
 
 #workspaces button.active {
-    color: @white;
-    border-bottom: 2px solid @accent;
+    color: @fg;
+    border-bottom: 2px solid @fg;
 }
 
 #workspaces button.hidden {
     color: @dim;
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid transparent;
 }
 
 #workspaces button.hidden.active {
-    color: @white;
-    border-bottom: 2px solid @accent;
+    color: @fg;
+    border-bottom: 1px solid @fg;
 }
 
 #workspaces button.urgent {
-    color: @white;
+    color: @bright;
     background-color: @accent;
 }
 
