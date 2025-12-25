@@ -81,7 +81,7 @@ window#waybar {
 
 /* Bluetooth state On */
 #bluetooth.on {
-    color: @accent;
+    color: @dim;
 }
 
 /* Disabled network state */
@@ -91,7 +91,7 @@ window#waybar {
 
 /* Disconnected network state */
 #network.disconnected {
-    color: @accent;
+    color: @fg;
 }
 
 /* Seperator */
