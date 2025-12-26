@@ -40,7 +40,7 @@ window#waybar {
 
 #workspaces button.active {
     color: @fg;
-    border-bottom: 2px solid @fg;
+    border-bottom: 2px solid @dim;
 }
 
 #workspaces button.hidden {
@@ -50,7 +50,7 @@ window#waybar {
 
 #workspaces button.hidden.active {
     color: @fg;
-    border-bottom: 1px solid @fg;
+    border-bottom: 2px solid @fg;
 }
 
 #workspaces button.urgent {
@@ -91,7 +91,7 @@ window#waybar {
 
 /* Disconnected network state */
 #network.disconnected {
-    color: @fg;
+    color: @dim;
 }
 
 /* Seperator */
