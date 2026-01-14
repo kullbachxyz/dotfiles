@@ -7,6 +7,11 @@
   "modules-right": [
     "custom/wg",
     "custom/sep2",
+    "memory",
+    "custom/sep2",
+    "disk",
+    "custom/sep2",
+    "cpu",
     "custom/sep2",
     "bluetooth",
     "custom/sep2",
@@ -15,8 +20,10 @@
     "custom/volume",
     "custom/sep2",
     "battery",
+    "custom/sep2",
     //"custom/sep",
     "clock",
+    "custom/sep2",
     "tray"
   ],
 
@@ -45,22 +52,25 @@
 
   "memory": {
     //"format": " {used:.0f}/{total:.0f}GB"
-    "format": " {used}GiB"
+    "format": " {used:.1f}GB"
   },
 
   "disk": {
     "interval": 60,
     "path": "/",
-    "format": " {free}"
+    "format": " {percentage_used}%"
   },
 
 "battery": {
+  "bat": "BAT1",
+  "adapter": "AC",
   "states": {
     "good": 95,
     "warning": 30,
     "critical": 15
   },
   "format": "{icon}{capacity}%",
+  "format-charging": " {capacity}%",
   "format-plugged": " {capacity}%",
   "format-time": "{H}:{M}",
   "format-icons": [" ", " ", " ", " ", " "],

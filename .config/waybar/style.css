@@ -34,23 +34,30 @@ window#waybar {
     color: @fg;
     background: transparent;
     border: none;
-    border-bottom: 1px solid transparent;
     transition: border-color 0.2s, color 0.2s;
 }
 
 #workspaces button.active {
-    color: @fg;
-    border-bottom: 2px solid @dim;
+    color: @wb-accent;
+    background: @wb-bg-highlight;
 }
 
 #workspaces button.hidden {
     color: @dim;
-    border-bottom: 1px solid transparent;
+}
+
+#workspaces button.empty {
+    color: @dim;
 }
 
 #workspaces button.hidden.active {
-    color: @fg;
-    border-bottom: 2px solid @fg;
+    color: @wb-accent;
+    background: @wb-bg-highlight;
+}
+
+#workspaces button.empty.active {
+    color: @wb-accent;
+    background: @wb-bg-highlight;
 }
 
 #workspaces button.urgent {
@@ -65,13 +72,53 @@ window#waybar {
 #cpu,
 #memory,
 #disk,
+#bluetooth,
 #network,
+#custom-wg,
+#custom-volume,
 #tray,
 #custom-sep {
-    padding: 0 10px;
+    padding: 0 4px;
     color: @fg;
     border: none;
     transition: color 0.2s;
+}
+
+/* Per-module accents (Tokyo Night palette) */
+#clock {
+    color: @wb-yellow;
+}
+
+#battery {
+    color: @wb-green;
+}
+
+#cpu {
+    color: @wb-red;
+}
+
+#memory {
+    color: @wb-purple;
+}
+
+#disk {
+    color: @wb-orange;
+}
+
+#custom-volume {
+    color: @wb-magenta;
+}
+
+#network {
+    color: @wb-cyan;
+}
+
+#bluetooth {
+    color: @wb-blue;
+}
+
+#tray {
+    color: @wb-fg;
 }
 
 /* Bluetooth state Off */
@@ -99,6 +146,11 @@ window#waybar {
     color: @dim;
 }
 
+#custom-sep2 {
+    padding: 0 2px;
+    color: @dim;
+}
+
 /* Tray */
 #tray {
     background: transparent;
@@ -113,4 +165,3 @@ window#waybar {
     color: @dim;
     /*color: #fb4934; */
 }
-
