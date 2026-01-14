@@ -1,0 +1,24 @@
+# Generated from /home/ph/.config/colors/current.css
+[colors.primary]
+background = "#282c34"
+foreground = "#abb2bf"
+
+[colors.normal]
+black = "#21252b"
+red = "#e06c75"
+green = "#98c379"
+yellow = "#e5c07b"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
+white = "#a0a8b7"
+
+[colors.bright]
+black = "#2c313c"
+red = "#e06c75"
+green = "#98c379"
+yellow = "#e5c07b"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
+white = "#abb2bf"

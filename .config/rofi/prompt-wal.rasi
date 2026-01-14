@@ -1,6 +1,7 @@
+@import "~/.config/rofi/colors-from-css.rasi"
 //@import "~/.cache/wal/colors-rofi.rasi"
 //@import "~/.config/rofi/theme-gruvbox.rasi"
-@import "~/.config/rofi/theme-tokyo-night.rasi"
+//@import "~/.config/rofi/theme-tokyo-night.rasi"
 
 /* Small prompt theme that uses pywal colors */
 
@@ -52,4 +53,3 @@ element-text selected {
     background-color: @accent;
     text-color: @bg;
 }
-

@@ -1,12 +1,12 @@
 /*@import url("file:///home/ph/.cache/wal/colors-waybar.css");*/
-/*@import url("file:///home/ph/.config/waybar/gruvbox-dark.css");*/
-@import url("file:///home/ph/.config/waybar/tokyo-night.css");
+@import url("file:///home/ph/.config/colors/current.css");
+/*@import url("file:///home/ph/.config/colors/tokyo-night.css");*/
 
 /* Aliases so the rest of the config can still use @bg, @fg, etc. */
 @define-color bg     @wb-bg;
 @define-color fg     @wb-fg;
 @define-color accent @wb-accent;
-@define-color dim    @wb-accent-alt;
+@define-color dim    @wb-fg-gutter;
 @define-color bright @wb-accent-bright;
 @define-color white  #ffffff;
 

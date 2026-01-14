@@ -1,6 +1,6 @@
 /* Combine pywal colors + base layout */
 
-//@import "~/.cache/wal/colors-rofi.rasi"
+@import "~/.config/rofi/colors-from-css.rasi"
 @import "~/.config/rofi/theme-base.rasi"
 //@import "~/.config/rofi/theme-gruvbox.rasi"
-@import "~/.config/rofi/theme-tokyo-night.rasi"
+//@import "~/.config/rofi/theme-tokyo-night.rasi"

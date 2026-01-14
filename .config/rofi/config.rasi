@@ -27,5 +27,5 @@ configuration{
     kb-mode-complete: "Control+o";
 }
 
-//@theme "~/.config/rofi/theme-combined.rasi"
-@theme "~/.config/rofi/tokyo-night.rasi"
+@theme "~/.config/rofi/theme-combined.rasi"
+//@theme "~/.config/rofi/tokyo-night.rasi"
