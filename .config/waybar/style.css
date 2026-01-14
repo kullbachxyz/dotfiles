@@ -39,8 +39,19 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: @wb-accent;
     background: @wb-bg-highlight;
+    color: @fg;
+    border: none;
+    border-top: none;
+    box-shadow: none;
+}
+
+#workspaces button:hover {
+    background: @wb-bg-highlight;
+    color: @wb-accent;
+    border: none;
+    border-top: none;
+    box-shadow: none;
 }
 
 #workspaces button.hidden {
