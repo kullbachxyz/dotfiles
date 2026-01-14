@@ -27,6 +27,7 @@ window {
     location: center;
     anchor: center;
     transparency: "screenshot";
+    background-color: @background;
     border-color: @primary;
     border: 3px;
     border-radius: 0;
@@ -130,4 +131,3 @@ button selected normal {
 scrollbar {
     enabled: true;
 }
-

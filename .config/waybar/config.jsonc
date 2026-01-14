@@ -32,12 +32,13 @@
     "format": "{:%a %d %b %H:%M}",
     "tooltip": false,
     //"tooltip-format": "{:%A, %d %B %Y}\n\n{calendar}",
-    "on-click": "foot -e calcurse"
+    "on-click": "sh -c '${TERMINAL:-foot} -e calcurse'"
   },
 
   "cpu": {
     "format": " {usage}%",
-    "tooltip": false
+    "tooltip": false,
+    "on-click": "sh -c '${TERMINAL:-foot} -e htop'"
   },
 
       "bluetooth": {
@@ -47,12 +48,13 @@
         "format-connected": "󰂱 {num_connections}",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "foot -e bluetui"
+        "on-click": "sh -c '${TERMINAL:-foot} -e bluetui'"
     },
 
   "memory": {
     //"format": " {used:.0f}/{total:.0f}GB"
-    "format": " {used:.1f}GB"
+    "format": " {used:.1f}GB",
+    "on-click": "sh -c '${TERMINAL:-foot} -e htop'"
   },
 
   "disk": {
@@ -74,7 +76,7 @@
   "format-plugged": " {capacity}%",
   "format-time": "{H}:{M}",
   "format-icons": [" ", " ", " ", " ", " "],
-  "on-click": "foot -e battop"
+  "on-click": "sh -c '${TERMINAL:-foot} -e battop'"
 },
 
 "custom/wg": {
@@ -99,14 +101,14 @@
   "format-disconnected": " ",
   "format-disabled": "",
   "tooltip-format": "{ifname} - {ipaddr}",
-  "on-click": "foot -e nmtui"
+  "on-click": "sh -c '${TERMINAL:-foot} -e nmtui'"
 },
 
 "custom/volume": {
   "exec": "~/.config/mango/scripts/volume.sh get",
   "format": " {}%",
   "tooltip-format": "{}%",
-  "on-click": "foot -e pulsemixer",
+  "on-click": "sh -c '${TERMINAL:-foot} -e pulsemixer'",
   "interval": 1
 },
 
