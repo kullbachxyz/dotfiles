@@ -6,6 +6,7 @@ waybar_style="${WAYBAR_STYLE:-$HOME/.config/waybar/style.css}"
 rofi_colors="${ROFI_COLORS:-$HOME/.config/rofi/colors-from-css.rasi}"
 librewolf_profile="${LIBREWOLF_PROFILE:-$HOME/.librewolf/xkvsxbr3.default-default}"
 mako_colors="${MAKO_COLORS:-$HOME/.config/mako/colors}"
+mango_colors="${MANGO_COLORS:-$HOME/.config/mango/colors.conf}"
 current_css="$colors_dir/current.css"
 out_file="${ALACRITTY_COLORS:-$colors_dir/alacritty-colors.toml}"
 
@@ -410,6 +411,37 @@ awk '
     print "border-color=" border;
   }
 ' css="$css_file" "$css_file" > "$mako_colors"
+
+awk '
+  /@define-color/ {
+    name=$2;
+    value=$3;
+    gsub(/;/, "", value);
+    colors[name]=value;
+  }
+  function need(name) {
+    if (!(name in colors)) {
+      missing = missing name " ";
+    }
+  }
+  END {
+    need("wb-bg");
+    need("wb-accent");
+
+    if (missing != "") {
+      print "Missing colors in " css ": " missing > "/dev/stderr";
+      exit 1;
+    }
+
+    bg = colors["wb-bg"];
+    accent = colors["wb-accent"];
+    gsub(/^#/, "", bg);
+    gsub(/^#/, "", accent);
+
+    print "bordercolor=0x" bg "ff";
+    print "focuscolor=0x" accent "ff";
+  }
+' css="$css_file" "$css_file" > "$mango_colors"
 
 bg_color="$(awk '/@define-color[[:space:]]+wb-bg/ {gsub(/;/,"",$3); print $3; exit}' "$css_file")"
 pkill swaybg >/dev/null 2>&1 || true

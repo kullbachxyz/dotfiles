@@ -18,7 +18,6 @@
 
 window#waybar {
     background-color: @bg;
-    background-image: linear-gradient(to top, @wb-bg-dark 0%, @bg 35%, @wb-bg-popup 70%, @wb-bg-highlight 100%);
     color: @wb-fg;
     border: none;
     box-shadow: none;
