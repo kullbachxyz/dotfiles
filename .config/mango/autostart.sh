@@ -1,5 +1,5 @@
 # Session defaults
-export TERMINAL=alacritty
+export TERMINAL=foot
 export EDITOR=nvim
 export BROWSER=librewolf
 
