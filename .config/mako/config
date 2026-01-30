@@ -8,17 +8,17 @@ sort=-time
 layer=overlay
 
 # size of the notification window
-width=300
+width=260
 height=110
 
 # flat, minimal box
-border-size=3
+border-size=2
 border-radius=0
-padding=8
+padding=6
 margin=8
 
 # typography
-font=JetBrainsMono NF 14
+font=JetBrainsMono Nerd Font 14
 
 # no icons – just text
 icons=0
@@ -27,4 +27,3 @@ max-icon-size=64
 # timeouts
 default-timeout=5000
 ignore-timeout=1
-
