@@ -27,3 +27,10 @@ max-icon-size=64
 # timeouts
 default-timeout=5000
 ignore-timeout=1
+
+# urgency styling (match Waybar battery colors)
+[urgency=normal]
+border-color=#8f6b3e
+
+[urgency=critical]
+border-color=#a02a2a

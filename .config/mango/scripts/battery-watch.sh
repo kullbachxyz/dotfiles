@@ -3,8 +3,8 @@ set -euo pipefail
 
 # Low battery notifier using upower + notify-send.
 # Thresholds are percentages.
-WARN_LEVEL=20
-CRIT_LEVEL=10
+WARN_LEVEL=30
+CRIT_LEVEL=15
 POLL_SECS=60
 COOLDOWN_SECS=600
 

@@ -8,14 +8,14 @@
 
 * {
     /* map wal colors */
-    bg:            @background;
-    bg-alt:        @background-alt;
+    bg:            #000000d9;
+    bg-alt:        #000000d9;
     fg:            @foreground;
     accent:        @selected;
     border-col:    @border-color;
 
     font: "JetBrainsMono Nerd Font 16";
-    background-color: @bg;
+    background-color: transparent;
     text-color:       @fg;
 }
 
@@ -29,12 +29,13 @@ window {
 
     location: center;
     anchor: center;
+    background-color: @bg;
 }
 
 /* Top bar (prompt + entry) */
 inputbar {
     padding: 6px 8px;
-    background-color: @bg;
+    background-color: transparent;
     border: 0 0 1px 0;
     border-color: @border-col;
 }
@@ -63,6 +64,7 @@ listview {
     spacing: 4px;
     scrollbar: false;
     lines: 6;
+    background-color: transparent;
 }
 
 /* Each row */

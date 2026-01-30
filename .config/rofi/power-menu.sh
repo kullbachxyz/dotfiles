@@ -10,7 +10,9 @@ entries="\
   Reboot
   Shutdown"
 
-choice="$(printf '%s\n' "$entries" | rofi -dmenu -i -p "Power" -theme ~/.config/rofi/power-wal.rasi)"
+choice="$(printf '%s\n' "$entries" | rofi -dmenu -i -p "Power" \
+  -theme ~/.config/rofi/power-wal.rasi \
+  -theme-str 'window { background-color: #000000d9; }')"
 
 case "$choice" in
   "  Lock")
@@ -37,4 +39,3 @@ case "$choice" in
     exit 0
     ;;
 esac
-
