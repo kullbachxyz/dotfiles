@@ -13,7 +13,7 @@
 * {
     font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 window#waybar {
@@ -21,7 +21,7 @@ window#waybar {
     color: @wb-fg;
     border: none;
     box-shadow: none;
-    padding: 4px 0;
+    padding: 2px 0;
 }
 
 /* --- Workspaces --- */
@@ -31,7 +31,7 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 8px;
+    padding: 0 6px;
     color: @fg;
     background: transparent;
     border: none;
@@ -47,8 +47,8 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: @wb-bg-highlight;
-    color: @wb-accent;
+    background: transparent;
+    color: @fg;
     border: none;
     border-top: none;
     box-shadow: none;
@@ -63,104 +63,48 @@ window#waybar {
 }
 
 #workspaces button.hidden.active {
-    color: @wb-accent;
+    color: @fg;
     background: @wb-bg-highlight;
 }
 
 #workspaces button.empty.active {
-    color: @wb-accent;
+    color: @fg;
     background: @wb-bg-highlight;
 }
 
 #workspaces button.urgent {
-    color: @bright;
-    background-color: @accent;
+    color: @fg;
+    background-color: transparent;
 }
 
 
 /* --- Modules --- */
 #clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#bluetooth,
 #network,
 #custom-wg,
-#custom-volume,
-#tray,
-#custom-sep {
-    padding: 0 4px;
+#battery,
+#tray {
+    padding: 0 6px;
     color: @fg;
     border: none;
     transition: color 0.2s;
 }
 
-/* Per-module accents (Tokyo Night palette) */
-#clock {
-    color: @wb-yellow;
-}
-
-#battery {
-    color: @wb-green;
-}
-
-#cpu {
-    color: @wb-red;
-}
-
-#memory {
-    color: @wb-purple;
-}
-
-#disk {
-    color: @wb-orange;
-}
-
-#custom-volume {
-    color: @wb-magenta;
-}
-
-#network {
-    color: @wb-cyan;
-}
-
-#bluetooth {
-    color: @wb-blue;
-}
-
+/* Per-module colors removed for minimal mono look */
+#clock,
+#network,
 #tray {
-    color: @wb-fg;
-}
-
-/* Bluetooth state Off */
-#bluetooth.off {
-    color: @dim;
-}
-
-/* Bluetooth state On */
-#bluetooth.on {
-    color: @dim;
+    color: @fg;
 }
 
 /* Disabled network state */
 #network.disabled {
-    color: @dim;
+    color: @fg;
 }
 
 /* Disconnected network state */
 #network.disconnected {
-    color: @dim;
-}
-
-/* Seperator */
-#custom-sep {
-    color: @dim;
-}
-
-#custom-sep2 {
-    padding: 0 2px;
-    color: @dim;
+    color: @fg;
 }
 
 /* Tray */
@@ -169,11 +113,11 @@ window#waybar {
 }
 
 #custom-wg.connected {
-    color: @accent;
+    color: @fg;
     /* color: #689d6a; */
 }
 
 #custom-wg.disconnected {
-    color: @dim;
+    color: @fg;
     /*color: #fb4934; */
 }

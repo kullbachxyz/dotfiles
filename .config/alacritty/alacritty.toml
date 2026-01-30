@@ -2,7 +2,7 @@
 import = ["~/.config/colors/alacritty-colors.toml"]
 
 [window]
-opacity=0.9
+opacity=0.8
 [window.padding]
 y = 6 
 x = 6  
@@ -10,4 +10,4 @@ x = 6
 [font]
 normal = { family = "JetBrainsMono Nerd Font Propo", style = "Regular" }
 # size = 20
-size = 14
+size = 13

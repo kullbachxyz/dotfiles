@@ -1,35 +1,19 @@
 {
   "modules-left": [
     "ext/workspaces",
-    "custom/sep",
     "dwl/window#title"
   ],
   "modules-right": [
     "custom/wg",
-    "custom/sep2",
-    "memory",
-    "custom/sep2",
-    "disk",
-    "custom/sep2",
-    "cpu",
-    "custom/sep2",
-    "bluetooth",
-    "custom/sep2",
     "network",
-    "custom/sep2",
-    "custom/volume",
-    "custom/sep2",
     "battery",
-    "custom/sep2",
-    //"custom/sep",
     "clock",
-    "custom/sep2",
     "tray"
   ],
 
   "clock": {
     //"format": " {:%d-%b-%Y  %H:%M}",
-    "format": "{:%a %d %b %H:%M}",
+    "format": "{:%H:%M}",
     "tooltip": false,
     //"tooltip-format": "{:%A, %d %B %Y}\n\n{calendar}",
     "on-click": "sh -c '${TERMINAL:-foot} -e calcurse'"
@@ -72,8 +56,9 @@
     "critical": 15
   },
   "format": "{icon}{capacity}%",
-  "format-charging": " {capacity}%",
-  "format-plugged": " {capacity}%",
+  "format-charging": "",
+  "format-plugged": "",
+  "format-full": "",
   "format-time": "{H}:{M}",
   "format-icons": [" ", " ", " ", " ", " "],
   "on-click": "sh -c '${TERMINAL:-foot} -e battop'"
@@ -104,14 +89,6 @@
   "on-click": "sh -c '${TERMINAL:-foot} -e nmtui'"
 },
 
-"custom/volume": {
-  "exec": "~/.config/mango/scripts/volume.sh get",
-  "format": " {}%",
-  "tooltip-format": "{}%",
-  "on-click": "sh -c '${TERMINAL:-foot} -e pulsemixer'",
-  "interval": 1
-},
-
 "custom/brightness": {
   "exec": "~/.config/mango/scripts/brightness.sh get",
   "format": " {}% ",
@@ -134,17 +111,6 @@
   },
 
   "dwl/window#title": {
-    "format": " {title}"
-  },
-
-"custom/sep": {
-  //"format": " ",
-  "format": "",
-  "interval": 0
-},
-
-  "custom/sep2": {
-  "format": " ",
-  "interval": 0
+    "format": "{title}"
   }
 }

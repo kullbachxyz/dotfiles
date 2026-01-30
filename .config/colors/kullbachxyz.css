@@ -1,7 +1,7 @@
-@define-color wb-bg             #222222;
+@define-color wb-bg             #000000;
 @define-color wb-bg-dark        #101112;
-@define-color wb-bg-highlight   #6f7273;
-@define-color wb-bg-popup       #101112;
+@define-color wb-bg-highlight   #222222;
+@define-color wb-bg-popup       #222222;
 @define-color wb-fg             #b0b3b4;
 @define-color wb-fg-dark        #b0b3b4;
 @define-color wb-fg-gutter      #6f7273;

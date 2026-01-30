@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Session defaults
-export TERMINAL=foot
+export TERMINAL=alacritty
 export EDITOR=nvim
 export BROWSER=librewolf
 
@@ -18,6 +18,7 @@ export XDG_SESSION_TYPE=wayland
 # Theme preferences (optional)
 export GTK_THEME=Adwaita-dark
 export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_STYLE_OVERRIDE=kvantum
 
 # SHH
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -29,4 +30,3 @@ if [ ! -S "$SSH_AUTH_SOCK" ] || ! ssh-add -l >/dev/null 2>&1; then
 fi
 
 exec mango
-
