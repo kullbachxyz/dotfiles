@@ -86,7 +86,7 @@
   "format-disconnected": " ",
   "format-disabled": "",
   "tooltip-format": "{ifname} - {ipaddr}",
-  "on-click": "sh -c '${TERMINAL:-foot} -e nmtui'"
+  "on-click": "sh -c '$TERMINAL --title wifitui -e wifitui'"
 },
 
 "custom/brightness": {
