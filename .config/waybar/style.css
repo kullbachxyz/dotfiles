@@ -121,3 +121,12 @@ window#waybar {
     color: @fg;
     /*color: #fb4934; */
 }
+
+/* Battery low states */
+#battery.warning {
+    color: @wb-yellow;
+}
+
+#battery.critical {
+    color: @wb-red;
+}

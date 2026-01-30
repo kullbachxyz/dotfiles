@@ -23,10 +23,12 @@ export QT_STYLE_OVERRIDE=kvantum
 # SHH
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-# start agent if missing or not responding
+#  # start agent if missing or not responding
 if [ ! -S "$SSH_AUTH_SOCK" ] || ! ssh-add -l >/dev/null 2>&1; then
   rm -f "$SSH_AUTH_SOCK"
   eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")" >/dev/null
+  ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 fi
 
-exec mango
+# exec mango -s ~/.config/mango/autostart.sh
+exec dbus-run-session -- mango -s ~/.config/mango/autostart.sh

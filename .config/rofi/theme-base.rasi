@@ -14,7 +14,7 @@
     black:         #000000;
 
     font: "JetBrainsMono NF 14";
-    background-color: @bg;
+    background-color: transparent;
     border: 0px;
 
     transparent: rgba(46,52,64,0);
@@ -26,8 +26,8 @@ window {
     orientation: horizontal;
     location: center;
     anchor: center;
-    transparency: "screenshot";
-    background-color: @background;
+    transparency: "real";
+    background-color: @bg;
     border-color: @primary;
     border: 3px;
     border-radius: 0;
@@ -38,6 +38,7 @@ window {
 mainbox {
     spacing: 0;
     children: [ inputbar, message, listview ];
+    background-color: transparent;
 }
 
 inputbar {
@@ -45,15 +46,18 @@ inputbar {
     padding: 11px;
     border: 0 0 2px 0;
     border-color: @primary;
+    background-color: transparent;
 }
 
 message {
     padding: 0;
+    background-color: transparent;
 }
 
 textbox {
     color: @kl;
     padding: 10px;
+    background-color: transparent;
 }
 
 entry, prompt, case-indicator {
@@ -75,6 +79,7 @@ listview {
     lines: 12;
     columns: 1;
     dynamic: false;
+    background-color: transparent;
 }
 
 element {
