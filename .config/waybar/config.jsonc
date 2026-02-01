@@ -5,6 +5,7 @@
   ],
   "modules-right": [
     "custom/wg",
+    "bluetooth",
     "network",
     "battery",
     "clock",
@@ -29,10 +30,10 @@
         "format-on": "󰂯",
         "format-off": "󰂲",
         "format-disabled": "", // an empty format will hide the module
-        "format-connected": "󰂱 {device_battery_percentage}%",
+        "format-connected": "󰂱",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "sh -c '${TERMINAL:-foot} -e bluetui'"
+        "on-click": "sh -c '$TERMINAL --title bluetui -e bluetui'"
     },
 
   "memory": {

@@ -20,10 +20,18 @@ export GTK_THEME=Adwaita-dark
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_STYLE_OVERRIDE=kvantum
 
-# SHH
+# Start DBus + session, but first ensure we have a Secret Service for Nextcloud.
+# gnome-keyring provides org.freedesktop.secrets (libsecret), which Nextcloud uses
+# to store tokens and E2EE keys. We do NOT enable the "ssh" component to avoid
+# clashing with your own ssh-agent setup below.
+if command -v gnome-keyring-daemon >/dev/null 2>&1; then
+  eval "$(gnome-keyring-daemon --start --components=secrets)"
+fi
+
+# SSH
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-#  # start agent if missing or not responding
+# start agent if missing or not responding
 if [ ! -S "$SSH_AUTH_SOCK" ] || ! ssh-add -l >/dev/null 2>&1; then
   rm -f "$SSH_AUTH_SOCK"
   eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")" >/dev/null
@@ -32,3 +40,4 @@ fi
 
 # exec mango -s ~/.config/mango/autostart.sh
 exec dbus-run-session -- mango -s ~/.config/mango/autostart.sh
+

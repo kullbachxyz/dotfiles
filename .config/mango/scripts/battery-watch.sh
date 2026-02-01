@@ -6,7 +6,7 @@ set -euo pipefail
 WARN_LEVEL=30
 CRIT_LEVEL=15
 POLL_SECS=60
-COOLDOWN_SECS=600
+COOLDOWN_SECS=300
 
 last_notify_ts=0
 

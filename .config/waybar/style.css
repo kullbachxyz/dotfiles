@@ -80,6 +80,7 @@ window#waybar {
 
 /* --- Modules --- */
 #clock,
+#bluetooth,
 #network,
 #custom-wg,
 #battery,
