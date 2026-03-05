@@ -1,0 +1,47 @@
+#!/bin/sh
+btn="${BLOCK_BUTTON:-$BUTTON}"
+if [ -n "$btn" ]; then
+    case "$btn" in
+        1|2) setsid -f "$TERMINAL" -e sh -c 'watch -n 1 acpi -V' ;;
+    esac
+fi
+
+ac_online=0
+total_capacity=0
+bat_count=0
+status="Unknown"
+
+for d in /sys/class/power_supply/*; do
+    [ -d "$d" ] || continue
+    type=$(cat "$d/type" 2>/dev/null)
+    case "$type" in
+        Battery)
+            cap=$(cat "$d/capacity" 2>/dev/null)
+            [ -z "$cap" ] && continue
+            [ "$cap" -gt 100 ] && cap=100
+            s=$(cat "$d/status" 2>/dev/null)
+            case "$s" in
+                Charging)             status="Charging" ;;
+                Discharging)          [ "$status" != "Charging" ] && status="Discharging" ;;
+                "Not charging"|Full)  [ "$status" = "Unknown" ] && status="Full" ;;
+            esac
+            total_capacity=$((total_capacity + cap))
+            bat_count=$((bat_count + 1))
+            ;;
+        Mains)
+            ac_online=$(cat "$d/online" 2>/dev/null || echo 0)
+            ;;
+    esac
+done
+
+[ "$bat_count" -eq 0 ] && exit 0
+
+capacity=$((total_capacity / bat_count))
+
+if [ "$status" = "Charging" ] || { [ "$status" = "Full" ] && [ "$ac_online" = "1" ]; }; then
+    icon="⚡"
+else
+    icon="🔋"
+fi
+
+printf '%s %s%%\n' "$icon" "$capacity"

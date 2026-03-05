@@ -1,0 +1,46 @@
+#!/bin/sh
+# WireGuard VPN status and control
+#
+# Left click   (1): toggle VPN on/off (wg0-full)
+# Middle click (2): open nmtui in terminal
+# Right click  (3): wmenu prompt to switch full/split tunnel
+#
+# Requires: NetworkManager, wmenu, libnotify
+# Connections: wg0-full (allowed-ips=0.0.0.0/0)
+#              wg0-split (allowed-ips=192.168.188.0/24)
+
+btn="${BLOCK_BUTTON:-$BUTTON}"
+if [ -n "$btn" ]; then
+    case "$btn" in
+        1)
+            if nmcli con show --active | grep -q "^wg0"; then
+                nmcli con down wg0-full 2>/dev/null; nmcli con down wg0-split 2>/dev/null
+                notify-send "WireGuard" "VPN Disconnected"
+            else
+                nmcli con up wg0-full && notify-send "WireGuard" "VPN Connected (Full)"
+            fi
+            ;;
+        2) setsid -f "$TERMINAL" -e nmtui ;;
+        3)
+            choice=$(printf "Full VPN (wg0-full)\nSplit Tunnel (wg0-split)" | wmenu -p "VPN Mode:")
+            case "$choice" in
+                "Full VPN (wg0-full)")
+                    nmcli con down wg0-split 2>/dev/null
+                    nmcli con up wg0-full && notify-send "WireGuard" "Full VPN"
+                    ;;
+                "Split Tunnel (wg0-split)")
+                    nmcli con down wg0-full 2>/dev/null
+                    nmcli con up wg0-split && notify-send "WireGuard" "Split Tunnel"
+                    ;;
+            esac
+            ;;
+    esac
+fi
+
+if nmcli con show --active 2>/dev/null | grep -q "^wg0-full"; then
+    printf '🔒'
+elif nmcli con show --active 2>/dev/null | grep -q "^wg0-split"; then
+    printf '🔓'
+else
+    exit 0
+fi
