@@ -39,7 +39,7 @@ done
 capacity=$((total_capacity / bat_count))
 
 if [ "$status" = "Charging" ] || { [ "$status" = "Full" ] && [ "$ac_online" = "1" ]; }; then
-    icon="⚡"
+    icon="🔌"
 else
     icon="🔋"
 fi
