@@ -6,4 +6,4 @@ if [ -n "$btn" ]; then
 	esac
 fi
 
-date "+📅 %a %d %b 🕓 %H:%M"
+date "+📅 %d %b %Y (%a) 🕓 %H:%M"
