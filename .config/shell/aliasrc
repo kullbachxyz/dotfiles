@@ -20,3 +20,7 @@ alias mdl='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata --outpu
 alias cdwm='nvim ~/.local/src/dwm/config.h'
 alias mdwm='cd ~/.local/src/dwm/ && sudo make clean install && cd -'
 
+# ptouch-print alias for Brother 2430PC labeö printer
+label() {
+  ptouch-print --fontsize 45 --text "$@"
+}

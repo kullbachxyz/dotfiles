@@ -3,7 +3,7 @@
 btn="${BLOCK_BUTTON:-$BUTTON}"
 
 case "$btn" in
-    1) volume toggle ;;   # left click = mute/unmute
+    1) setsid -f "$TERMINAL" -e pulsemixer ;;   # left click = pulsemixer
     4) volume up ;;       # scroll up = volume up
     5) volume down ;;     # scroll down = volume down
 esac
