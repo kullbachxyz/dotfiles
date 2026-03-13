@@ -10,14 +10,14 @@ fi
 iface=$(ip route show default 2>/dev/null | awk 'NR==1{print $5}')
 if [ -n "$iface" ]; then
 	if [ -d "/sys/class/net/$iface/wireless" ]; then
-		printf '📶'
-	else
-		printf '🔗'
+	signal=$(nmcli -t -f IN-USE,SIGNAL dev wifi | awk -F: '$1=="*"{print $2}')
+	printf '🛜 %s%%' "$signal"
+else	printf '🌐'
 	fi
 else
 	wifi_state=$(nmcli -t -f TYPE,STATE dev 2>/dev/null | grep '^wifi:' | head -1 | cut -d: -f2)
 	case "$wifi_state" in
-		disconnected) printf '📵' ;;
+		disconnected) printf '🚫' ;;
 		*)            exit 0 ;;
 	esac
 fi
