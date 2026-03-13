@@ -2,9 +2,11 @@
 
 # Start keyring for secrets/pkcs11 (ssh dropped in gnome-keyring 46+)
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)"
+export GNOME_KEYRING_CONTROL
+export GNOME_KEYRING_PID
 
 # Bootstrap keyring for Electron apps (Element, etc.)
-secret-tool store --label='xinitrc bootstrap' xinitrc bootstrap <<< "bootstrap" 2>/dev/null &
+secret-tool store --label='xinitrc bootstrap' xinitrc bootstrap <<< "bootstrap" 2>/dev/null
 
 remaps &
 mpd &
