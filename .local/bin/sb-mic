@@ -1,0 +1,17 @@
+#!/bin/sh
+
+btn="${BLOCK_BUTTON:-$BUTTON}"
+
+case "$btn" in
+    1) mic toggle ;;   # left click toggle mic
+esac
+
+MIC_INFO=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
+
+MUTED=$(echo "$MIC_INFO" | grep -q MUTED && echo 1 || echo 0)
+
+if [ "$MUTED" -eq 1 ]; then
+    echo "🎙️❌"
+else
+    echo "🎙️ on"
+fi

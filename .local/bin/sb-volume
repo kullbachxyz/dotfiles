@@ -1,0 +1,20 @@
+#!/bin/sh
+
+btn="${BLOCK_BUTTON:-$BUTTON}"
+
+case "$btn" in
+    1) volume toggle ;;   # left click = mute/unmute
+    4) volume up ;;       # scroll up = volume up
+    5) volume down ;;     # scroll down = volume down
+esac
+
+VOL_INFO=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+
+VOL=$(echo "$VOL_INFO" | awk '{print $2 * 100}')
+MUTED=$(echo "$VOL_INFO" | grep -q MUTED && echo 1 || echo 0)
+
+if [ "$MUTED" -eq 1 ]; then
+    echo "🔇"
+else
+    printf "🔊 %.0f%%\n" "$VOL"
+fi
