@@ -26,6 +26,61 @@ vim.notify = function(msg, ...)
 end
 
 require("lazy").setup({
+-- Completion + LSP (nvim 0.11 native vim.lsp.config, no lspconfig plugin needed)
+{
+  "hrsh7th/nvim-cmp",
+  dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  config = function()
+    local cmp = require("cmp")
+    cmp.setup({
+      mapping = cmp.mapping.preset.insert({
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<CR>"]      = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"]     = cmp.mapping.abort(),
+      }),
+      sources = { { name = "nvim_lsp" } },
+    })
+    local caps = require("cmp_nvim_lsp").default_capabilities()
+    vim.lsp.config("bashls", {
+      cmd          = { "bash-language-server", "start" },
+      filetypes    = { "sh", "bash" },
+      capabilities = caps,
+    })
+    vim.lsp.enable("bashls")
+  end,
+},
+-- Treesitter
+{
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  main = "nvim-treesitter",
+  opts = {
+    ensure_installed = { "bash", "c", "lua", "markdown", "html", "css", "yaml" },
+    highlight = { enable = true },
+    indent    = { enable = true },
+  },
+},
+-- Statusline
+{
+  "nvim-lualine/lualine.nvim",
+  opts = {
+    options = {
+      theme                = "codedark",
+      component_separators = "|",
+      section_separators   = "",
+    },
+  },
+},
+-- Fuzzy finder
+{
+  "ibhagwan/fzf-lua",
+  config = function()
+    local fzf = require("fzf-lua")
+    vim.keymap.set("n", "<leader>ff", fzf.files,  { desc = "Find files" })
+    vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live grep" })
+    vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Buffers" })
+  end,
+},
 {
   "catgoose/nvim-colorizer.lua",
   config = function()
@@ -104,3 +159,17 @@ vim.keymap.set("n", "<leader>sp", "[s", { remap = true, desc = "Prev misspelling
 vim.keymap.set("n", "<leader>ss", "z=", { remap = true, desc = "Spell suggestions" })
 vim.keymap.set("n", "<leader>sa", "zg", { remap = true, desc = "Add word to dictionary" })
 vim.keymap.set("n", "<leader>sw", "zw", { remap = true, desc = "Mark word as wrong" })
+-- ===== LSP keymaps (active when a language server attaches) =====
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local map = function(keys, fn, desc)
+      vim.keymap.set("n", keys, fn, { buffer = ev.buf, desc = desc })
+    end
+    map("gd",         vim.lsp.buf.definition,     "Go to definition")
+    map("K",          vim.lsp.buf.hover,           "Hover docs")
+    map("<leader>rn", vim.lsp.buf.rename,          "Rename symbol")
+    map("<leader>ca", vim.lsp.buf.code_action,     "Code action")
+    map("[d",         vim.diagnostic.goto_prev,    "Prev diagnostic")
+    map("]d",         vim.diagnostic.goto_next,    "Next diagnostic")
+  end,
+})
