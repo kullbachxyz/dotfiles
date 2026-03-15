@@ -3,9 +3,9 @@
 #
 # Left click   (1): toggle VPN on/off (wg0-full)
 # Middle click (2): open nmtui in terminal
-# Right click  (3): wmenu prompt to switch full/split tunnel
+# Right click  (3): dmenu prompt to switch full/split tunnel
 #
-# Requires: NetworkManager, wmenu, libnotify
+# Requires: NetworkManager, dmenu, libnotify
 # Connections: wg0-full (allowed-ips=0.0.0.0/0)
 #              wg0-split (allowed-ips=192.168.188.0/24)
 
@@ -22,7 +22,7 @@ if [ -n "$btn" ]; then
             ;;
         2) setsid -f "$TERMINAL" -e nmtui ;;
         3)
-            choice=$(printf "Full VPN (wg0-full)\nSplit Tunnel (wg0-split)" | wmenu -p "VPN Mode:")
+            choice=$(printf "Full VPN (wg0-full)\nSplit Tunnel (wg0-split)" | dmenu -p "VPN Mode:")
             case "$choice" in
                 "Full VPN (wg0-full)")
                     nmcli con down wg0-split 2>/dev/null
