@@ -23,5 +23,7 @@ sleep 1
 pipewire-pulse &
 wireplumber &
 
+xset s 600 &
+xss-lock -- slock &
 dwmblocks &
 exec dbus-launch dwm
