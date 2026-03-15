@@ -23,6 +23,5 @@ sleep 1
 pipewire-pulse &
 wireplumber &
 
-mailnotify &
 dwmblocks &
 exec dbus-launch dwm
