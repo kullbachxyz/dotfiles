@@ -23,7 +23,7 @@ lock(){
     kill -44 $(pidof dwmblocks)
 }
 
-case "$(printf "🔒 lock\n🚪 leave $WM\n♻ renew $WM\n🐻 hibernate\n🔃 reboot\n🖥 shutdown\n💤 sleep\n📺 display off" | dmenu -i -p 'Action: ')" in
+case "$(printf "🔒 lock\n🚪 leave $WM\n♻ renew $WM\n🐻 hibernate\n🔃 reboot\n🖥 shutdown\n💤 sleep\n📺 display off" | dmenu -i -p 'Action: ' -nb '#282c36' -nf '#c8cad0' -sb '#363c49' -sf '#e0e0e0')" in
 	'🔒 lock') lock ;;
 	"🚪 leave $WM") kill -TERM "$(wmpid)" ;;
 	"♻ renew $WM") kill -HUP "$(wmpid)" ;;

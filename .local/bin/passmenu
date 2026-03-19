@@ -25,14 +25,14 @@ password_files=( "$prefix"/**/*.gpg )
 [[ ${#password_files[@]} -eq 0 ]] && echo "No password files found!" && exit 1
 
 # dmenu command
-dmenu_cmd="dmenu -i"
+dmenu_cmd=(dmenu -i -nb '#282c36' -nf '#c8cad0' -sb '#363c49' -sf '#e0e0e0')
 
 # Strip prefix and extension for pass
 password_files=("${password_files[@]#$prefix/}")
 password_files=("${password_files[@]%.gpg}")
 
 # Select password via dmenu
-password=$(printf '%s\n' "${password_files[@]}" | $dmenu_cmd "$@")
+password=$(printf '%s\n' "${password_files[@]}" | "${dmenu_cmd[@]}" "$@")
 
 # Exit if no password selected
 [[ -n $password ]] || exit 0
