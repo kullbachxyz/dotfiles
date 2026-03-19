@@ -4,24 +4,24 @@ follow = keyboard
 width = (0, 512)
 height = (0, 315)
 frame_width = 3
-offset = (10, 29)
+offset = (10, 33)
 padding = 15
 horizontal_padding = 15
 transparency = 0
-font = monospace 10
+font = mono 11
 format = "<b>%s</b>\n%b"
-background = "#000000"
-foreground = "#b0b3b4"
-highlight = "#005577"
-frame_color = "#222222"
+background = "#282c36"
+foreground = "#c8cad0"
+highlight = "#4a83ca"
+frame_color = "#363c49"
 
 [urgency_low]
 timeout = 3
 
 [urgency_normal]
-frame_color = "#222222"
+frame_color = "#363c49"
 timeout = 5
 
 [urgency_critical]
-frame_color = "#a02a2a"
+frame_color = "#db3f30"
 timeout = 10
