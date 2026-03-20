@@ -25,7 +25,7 @@ password_files=( "$prefix"/**/*.gpg )
 [[ ${#password_files[@]} -eq 0 ]] && echo "No password files found!" && exit 1
 
 # dmenu command
-dmenu_cmd=(dmenu -i -nb '#282c36' -nf '#c8cad0' -sb '#363c49' -sf '#e0e0e0')
+dmenu_cmd=(dmenu -i)
 
 # Strip prefix and extension for pass
 password_files=("${password_files[@]#$prefix/}")
