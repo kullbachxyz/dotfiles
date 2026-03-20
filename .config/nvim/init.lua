@@ -65,7 +65,7 @@ require("lazy").setup({
   "nvim-lualine/lualine.nvim",
   opts = {
     options = {
-      theme                = "codedark",
+      theme = "auto",
       component_separators = "|",
       section_separators   = "",
     },
