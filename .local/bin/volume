@@ -1,5 +1,10 @@
 #!/bin/bash
 
+DUNSTRC="$HOME/.config/dunst/dunstrc"
+
+# Extract border color from urgency_normal
+HL_COLOR=$(grep -A5 "\[urgency_normal\]" "$DUNSTRC" | grep frame_color | head -n1 | awk '{gsub(/"/,"",$3); print $3}')
+
 # Check if an argument is provided
 if [ $# -ne 1 ]; then
   echo "Usage: $0 up|down|mute|unmute|toggle"
@@ -47,7 +52,13 @@ IS_MUTED=$(echo "$VOLUME_INFO" | grep -q MUTED && echo "yes" || echo "no")
 
 # Display the current volume as a notification (without decimals)
 if [ "$IS_MUTED" == "yes" ]; then
-   dunstify -r "$NOTIFY_ID" --hints=int:value:0 "Volume: Muted 🔇"
+   dunstify -r "$NOTIFY_ID" \
+     --hints=int:value:0 \
+     -h string:hlcolor:"${HL_COLOR:-#888888}" \
+     "Volume: Muted 🔇"
 else
-  dunstify -r "$NOTIFY_ID" --hints=int:value:"$CURRENT_VOLUME_PERCENT" "Volume: $(printf "%.0f" "$CURRENT_VOLUME_PERCENT")%"
+  dunstify -r "$NOTIFY_ID" \
+    --hints=int:value:"$CURRENT_VOLUME_PERCENT" \
+    -h string:hlcolor:"${HL_COLOR:-#888888}" \
+    "Volume: $(printf "%.0f" "$CURRENT_VOLUME_PERCENT")%"
 fi

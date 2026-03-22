@@ -1,32 +1,35 @@
 #!/bin/bash
 
+DUNSTRC="$HOME/.config/dunst/dunstrc"
+
+# Extract foreground color from urgency_normal
+HL_COLOR=$(grep -A5 "\[urgency_normal\]" "$DUNSTRC" | grep foreground | head -n1 | awk '{gsub(/"/,"",$3); print $3}')
+HL_COLOR=${HL_COLOR:-#888888}
+
 # Check if an argument is provided
 if [ $# -ne 1 ]; then
   echo "Usage: $0 up|down"
   exit 1
 fi
 
-# Define the brightness change percentage
 BRIGHTNESS_CHANGE=5%
+NOTIFY_ID=9998
 
-# Clear previous notifications using dunstctl
-dunstctl close
-
-# Perform the action based on the argument
+# Perform the action
 if [ "$1" == "up" ]; then
-  # Increase brightness
   brightnessctl set +$BRIGHTNESS_CHANGE &>/dev/null
 elif [ "$1" == "down" ]; then
-  # Decrease brightness
   brightnessctl set $BRIGHTNESS_CHANGE- &>/dev/null
 else
   echo "Invalid argument. Use 'up' or 'down'."
   exit 1
 fi
 
-# Get the current brightness value
-CURRENT_BRIGHTNESS=$(brightnessctl | awk -F'[()]' '{print $2}' | tr -d '\n' | awk '{gsub(/^[ \t]+|[ \t]+$/, ""); print $1}')
+# Get brightness %
+CURRENT_BRIGHTNESS=$(brightnessctl | awk -F'[()]' '{print $2}' | tr -d '%' | xargs)
 
-# Display the current brightness as a notification
-# notify-send "Brightness" "$CURRENT_BRIGHTNESS"
-dunstify --hints=int:value:"$CURRENT_BRIGHTNESS" "Brightness: $(printf "%.0f" "$CURRENT_BRIGHTNESS")%"
+# Notify
+dunstify -r "$NOTIFY_ID" \
+  --hints=int:value:"$CURRENT_BRIGHTNESS" \
+  -h string:hlcolor:"$HL_COLOR" \
+  "Brightness: ${CURRENT_BRIGHTNESS}%"

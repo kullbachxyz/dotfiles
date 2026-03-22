@@ -10,18 +10,21 @@ horizontal_padding = 15
 transparency = 0
 font = mono 11
 format = "<b>%s</b>\n%b"
-background = "#282c36"
-foreground = "#c8cad0"
-highlight = "#4a83ca"
-frame_color = "#363c49"
 
 [urgency_low]
+background = "#222222"
+foreground = "#bbbbbb"
+frame_color = "#ddcd92"
 timeout = 3
 
 [urgency_normal]
-frame_color = "#363c49"
+background = "#222222"
+foreground = "#bbbbbb"
+frame_color = "#ddcd82"
 timeout = 5
 
 [urgency_critical]
-frame_color = "#db3f30"
+background = "#222222"
+foreground = "#bbbbbb"
+frame_color = "#cc241d"
 timeout = 10
