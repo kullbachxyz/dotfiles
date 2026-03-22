@@ -3,7 +3,7 @@
 DUNSTRC="$HOME/.config/dunst/dunstrc"
 
 # Extract foreground color from urgency_normal
-HL_COLOR=$(grep -A5 "\[urgency_normal\]" "$DUNSTRC" | grep foreground | head -n1 | awk '{gsub(/"/,"",$3); print $3}')
+HL_COLOR=$(grep -A5 "\[urgency_normal\]" "$DUNSTRC" | grep frame_color | head -n1 | awk '{gsub(/"/,"",$3); print $3}')
 HL_COLOR=${HL_COLOR:-#888888}
 
 # Check if an argument is provided
