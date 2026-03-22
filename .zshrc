@@ -10,7 +10,7 @@ compinit
 
 # Colors and Prompt
 autoload -U colors && colors
-PS1="%F{blue}%n%f%F{white}@%M %1~$ "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # vi mode
 bindkey -v
