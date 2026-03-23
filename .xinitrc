@@ -11,7 +11,7 @@ secret-tool store --label='xinitrc bootstrap' xinitrc bootstrap <<< "bootstrap" 
 remaps &
 mpd &
 dunst &
-# picom &
+picom &
 xwallpaper --zoom "$HOME/.local/share/walls/wall" &
 
 # Export GUI env to user systemd/DBus so keybinding-launched apps see it.
