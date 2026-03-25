@@ -1,11 +1,16 @@
 #!/bin/sh
-# 
+# This script checks the battery percentage every 3 minutes and sends
+# a notification if the percentage gets lower than 15%.
+
+if [ -d /sys/class/power_supply/BAT1 ];
+then 
 while true
 do
   battery_percentage=$(acpi -V | awk -F "," '{print $2}' | awk 'NR==1' | sed 's/[^0-9]//g')
-  if [ $battery_percentage -lt 65 ]
+  if [ $battery_percentage -lt 15 ]
   then
     notify-send -u critical "🪫Low Battery" "$battery_percentage% left"
   fi
   sleep 180
 done
+fi
