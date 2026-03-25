@@ -9,6 +9,7 @@ export GNOME_KEYRING_PID
 secret-tool store --label='xinitrc bootstrap' xinitrc bootstrap <<< "bootstrap" 2>/dev/null
 
 remaps &
+batmon &
 mpd &
 dunst &
 picom &
