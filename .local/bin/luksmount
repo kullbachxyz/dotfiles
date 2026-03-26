@@ -1,5 +1,6 @@
 #!/bin/bash
 # TODO
+# - drive should be chosen in demnu instead of terminal
 # - logic to only show unmounted dives (blkid shows mounted also) 
 # - unmount behaviour
 
