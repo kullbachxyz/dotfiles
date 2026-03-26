@@ -13,7 +13,7 @@ batmon &
 mpd &
 dunst &
 picom &
-xwallpaper --zoom "$HOME/.local/share/walls/wall" &
+xwallpaper --zoom "$HOME/.local/share/wall" &
 
 # Export GUI env to user systemd/DBus so keybinding-launched apps see it.
 systemctl --user import-environment DISPLAY XAUTHORITY XDG_RUNTIME_DIR SSH_AUTH_SOCK

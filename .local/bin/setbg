@@ -6,7 +6,7 @@
 #	If given a directory, choose random file in it.
 
 # Location of link to wallpaper link.
-bgloc="$HOME/.local/share/walls/wall"
+bgloc="$HOME/.local/share/wall"
 
 # Give -s as parameter to make notifications silent.
 while getopts "s" o; do case "${o}" in
