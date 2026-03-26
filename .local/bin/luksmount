@@ -1,0 +1,36 @@
+#!/bin/bash
+# TODO
+# - logic to only show unmounted dives (blkid shows mounted also) 
+# - unmount behaviour
+
+# List all devices
+lsblkoutput="$(lsblk -rpo "uuid,name,type,size,label,mountpoint,fstype")"
+
+# Get all LUKS drives
+allluks="$(echo "$lsblkoutput" | grep "crypto_LUKS")"
+
+# Get a list of the LUKS drive UUIDs already decrypted.
+decrypted="$(find /dev/disk/by-id/dm-uuid-CRYPT-LUKS2-* | sed "s|.*LUKS2-||;s|-.*||")"
+
+# Get only LUKS drives that are not decrypted.
+lockedlucksdevice="$(blkid -t TYPE=crypto_LUKS | awk -F ':' '{print $1}')"
+
+if [ -z "$lockedlucksdevice" ]; then 
+  notify-send "💾 No drives found" ""
+  exit
+else
+echo "Choose a drive to unlock: "
+select device in $lockedlucksdevice
+do
+    # Prompt for sudo password
+    password="$(dmenu -P -p "$1" <&-)"
+    # Unlock drive
+    echo $password | sudo -S ${TERMINAL:-st} -n floatterm -g 60x1 -e sudo cryptsetup open "$device" cryptusb
+    # Mount 
+    echo $password | sudo -S mount /dev/mapper/cryptusb /mnt/crypt
+    
+    notify-send "💾 $device mounted" ""
+
+    exit
+done
+fi
