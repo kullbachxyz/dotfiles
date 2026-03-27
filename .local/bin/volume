@@ -21,14 +21,28 @@ if [ "$1" == "up" ]; then
 
   # Check if the volume is less than 1.00 (100%)
   if (( $(echo "$CURRENT_VOLUME < 1.00" | bc -l) )); then
-    # Increase volume by 10%
+    # Increase volume by 5%
     wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ &>/dev/null
+  else
+    echo "Volume is already at 100%"
+  fi
+elif [ "$1" == "upp" ]; then
+  # Get the current volume as a floating point value (e.g., 1.00 for 100%)
+  CURRENT_VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}')
+
+  # Check if the volume is less than 1.00 (100%)
+  if (( $(echo "$CURRENT_VOLUME < 1.00" | bc -l) )); then
+    # Increase volume by 15%
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%+ &>/dev/null
   else
     echo "Volume is already at 100%"
   fi
 elif [ "$1" == "down" ]; then
   # Decrease volume by 5%
   wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- &>/dev/null
+elif [ "$1" == "downn" ]; then
+  # Decrease volume by 15%
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%- &>/dev/null
 elif [ "$1" == "toggle" ]; then
   wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle &>/dev/null
 elif [ "$1" == "mute" ]; then
