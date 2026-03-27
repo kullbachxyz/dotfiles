@@ -27,7 +27,7 @@ if [ "$1" == "up" ]; then
     echo "Volume is already at 100%"
   fi
 elif [ "$1" == "down" ]; then
-  # Decrease volume by 10%
+  # Decrease volume by 5%
   wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- &>/dev/null
 elif [ "$1" == "toggle" ]; then
   wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle &>/dev/null

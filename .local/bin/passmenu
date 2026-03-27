@@ -47,7 +47,7 @@ if [[ $password == *otp* ]]; then
     fi
 
     printf '%s' "$otp_code" | xclip -selection clipboard >/dev/null 2>&1
-    notify-send "Pass" "OTP code copied to clipboard."
+    notify-send "🔒 Passmenu" "OTP code copied to clipboard."
 else
     # Get password (first line only)
     if ! pass_output=$(pass show "$password"); then
@@ -58,5 +58,5 @@ else
     password_line=$(printf '%s\n' "$pass_output" | head -n 1)
 
     printf '%s' "$password_line" | xclip -selection clipboard >/dev/null 2>&1
-    notify-send "Pass" "Password copied to clipboard."
+    notify-send "🔒 Passmenu" "Password copied to clipboard."
 fi
