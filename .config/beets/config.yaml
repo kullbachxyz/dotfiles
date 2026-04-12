@@ -13,7 +13,18 @@ paths:
   singleton: Singles/$artist/$title
   comp: Compilations/$album/$track - $title
 
-plugins: fetchart embedart scrub replaygain lastgenre musicbrainz mbsync
+plugins: fetchart embedart scrub replaygain lastgenre musicbrainz mbsync convert
+
+convert:
+  dest: ~/ipod-music
+  format: mp3
+  auto: no
+  embed: yes
+  quiet: no
+  opts: -codec:a libmp3lame -b:a 320k -compression_level 0
+  id3v23: yes
+paths:
+  default: $albumartist/$album/$track $title
 
 art_filename: cover
 embedart:
@@ -26,3 +37,5 @@ fetchart:
   auto: yes
   cautious: yes
 
+replace:
+  '宇山寛人': "Uyama Hiroto"
