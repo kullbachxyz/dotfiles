@@ -6,7 +6,7 @@ set statusbar-bg		"#1d2021"
 set default-bg			"#1d2021"
 set highlight-color		"#458588"
 set recolor-lightcolor	"#1d2021"
-set recolor-darkcolor	"#ebdbb2"
+set recolor-darkcolor	"#fff"
 
 map u scroll half-up
 map d scroll half-down

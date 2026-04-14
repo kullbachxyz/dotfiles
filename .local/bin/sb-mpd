@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PLAY=""
-PAUSE=""
+PLAY="[>]"
+PAUSE="[x]"
 
 host="$(cat "$HOME/.config/mpd/active_host" 2>/dev/null)"
 [ -n "$host" ] && export MPD_HOST="$host"

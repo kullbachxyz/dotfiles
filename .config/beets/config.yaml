@@ -36,6 +36,3 @@ replaygain:
 fetchart:
   auto: yes
   cautious: yes
-
-replace:
-  '宇山寛人': "Uyama Hiroto"
