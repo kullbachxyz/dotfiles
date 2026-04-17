@@ -15,6 +15,8 @@ dunst &
 picom &
 xwallpaper --zoom "$HOME/.local/share/wall" &
 
+redshift -l 50:7 &
+
 # Export GUI env to user systemd/DBus so keybinding-launched apps see it.
 systemctl --user import-environment DISPLAY XAUTHORITY XDG_RUNTIME_DIR SSH_AUTH_SOCK
 dbus-update-activation-environment --systemd DISPLAY XAUTHORITY XDG_RUNTIME_DIR SSH_AUTH_SOCK
