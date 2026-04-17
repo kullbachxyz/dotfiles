@@ -7,7 +7,7 @@ color-status-fail red default bold
 
 # items (mw: yellow=read, brightyellow black=new, blue bg=selected, brightgreen=flagged)
 color-list-item yellow default
-color-list-item-selected color11 blue bold
+color-list-item-selected white color11 bold
 color-list-item-unread color11 black bold
 color-list-item-important color10 default bold
 
@@ -23,13 +23,11 @@ color-list-section-selected color14 blue bold
 color-list-section-unread color14 black bold
 color-list-section-failed red default bold
 
+list-entry-date-format "%F"
+
 bind ^P mark-unread-all
-
+bind c mark-read-all
 bind f exec nsxiv "%l"
-
 bind m exec mpv "%l"
-
 bind a toggle-read
-
-bind W exec $BROWSER --kiosk "%l"
-
+bind V exec $BROWSER --kiosk "%l"
